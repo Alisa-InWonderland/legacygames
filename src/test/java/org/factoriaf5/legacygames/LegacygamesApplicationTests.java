@@ -31,13 +31,14 @@ class LegacygamesApplicationTests {
 	GameRepository gameRepository;
 
 	@Test
-	void returnsTheExistingGames() throws Exception {
+	String returnsTheExistingGames() throws Exception {
 
 		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7 años"));
 
 		mockMvc.perform(get("/games"))
 				.andExpect(status().isOk())
-				.andExpect(view().name("games/all"))
+				.andExpect(view().name("games"))
 				.andExpect(model().attribute("games", hasItem(game)));
+	return "games";
 	}
 }
