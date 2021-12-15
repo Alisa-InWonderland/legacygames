@@ -1,32 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link type="text/css" rel="stylesheet" href="styles/style.css">
-</head>
-
+<head th:replace="fragments/head"></head>
 <body>
 <div class="container">
-    <header class="header">
 
-        <nav class="nav">
-            <ul>
-                <li>Games</li>
-                <li>Add Game</li>
-            </ul>
-        </nav>
-        <img class="logo" src="assets/logo.png" alt="logo">
-        <nav class="nav">
-            <ul>
-                <li>Sign In</li>
-                <li>Sign Out</li>
-            </ul>
-        </nav>
-    </header>
+    <header th:replace="fragments/header"></header>
 
     <section class="section-card">
         <h1 class="title">Games</h1>
