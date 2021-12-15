@@ -6,86 +6,12 @@
 <div class="container">
 
     <header th:replace="fragments/header"></header>
-
-<<<<<<< HEAD
-    <section class="section-card">
-        <h1 class="title">Games</h1>
-        <div class="container-card">
-            <p th:text="${games}"></p>
-            <!--             <div class="card">
-                            <img src="assets/img1.jpg">
-                            <h4>Naturaleza</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                            <a href="#">Leer más</a>
-                        </div>
-
-                        <div class="card">
-                            <img src="assets/img2.jpg">
-                            <h4>Comida</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetipisicing elit. Vel, excepturi unde?</p>
-                            <a href="#">Leer más</a>
-                        </div>
-
-
-                     <div class="card">
-                            <img src="assets/img3.jpg">
-                            <h4>Tecnología</h4>
-                            <p>MarisaLorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                            <a href="#">Leer más</a>
-                        </div>-->
-        </div>
-    </section>
-=======
     <main class="main">
-        <section>
-            <h1 class="title">Games</h1>
-            <div class="container-card">
-
-                <div class="card">
-                    <img src="assets/img1.jpg">
-                    <h4>Naturaleza</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-
-                <div class="card">
-                    <img src="assets/img2.jpg">
-                    <h4>Comida</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-
-                <div class="card">
-                    <img src="assets/img3.jpg">
-                    <h4>Tecnología</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-                <div class="card">
-                    <img src="assets/img1.jpg">
-                    <h4>Naturaleza</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-
-                <div class="card">
-                    <img src="assets/img2.jpg">
-                    <h4>Comida</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-
-                <div class="card">
-                    <img src="assets/img3.jpg">
-                    <h4>Tecnología</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, excepturi unde?</p>
-                    <a href="#">Leer más</a>
-                </div>
-
-            </div>
+        <section class="container">
+            <h1 th:text="${title}"></h1>
+            <p th:text="${games}"></p>
         </section>
     </main>
->>>>>>> c7cb20f1b1a00e14ab40cd6b9b909eb7e9329d3a
 
     <footer class="footer">
         <h2>Footer</h2>

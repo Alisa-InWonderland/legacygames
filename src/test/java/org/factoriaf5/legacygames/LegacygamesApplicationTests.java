@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-
-
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -27,11 +25,12 @@ class LegacygamesApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(view().name("games"));
 	}
+
 	@Autowired
 	GameRepository gameRepository;
 
 	@Test
-	String returnsTheExistingGames() throws Exception {
+	void returnsTheExistingGames() throws Exception {
 
 		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7 años"));
 
@@ -39,6 +38,5 @@ class LegacygamesApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(view().name("games"))
 				.andExpect(model().attribute("games", hasItem(game)));
-	return "games";
 	}
 }
