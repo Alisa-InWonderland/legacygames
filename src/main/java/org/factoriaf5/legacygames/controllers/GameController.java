@@ -23,7 +23,7 @@ import java.util.List;
         this.gameRepository = gameRepository;
     }
 
-    @GetMapping("/games")
+    @GetMapping("games")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
         model.addAttribute("title", "Game list");

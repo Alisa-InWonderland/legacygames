@@ -20,10 +20,10 @@ public class SampleDataLoader {
         gameRepository.saveAll(List.of(
                 new Game("Super Mario Bros", "14'99€", "7"),
                 new Game("Mario Kart Wii", "9'99€", "7"),
-                new Game("Tetris", "4'99€", "Fantasy"),
-                new Game("Lean Software Development", "Mary Poppendieck", "Software"),
-                new Game("Women, Race and Class", "Angela Y. Davis", "Essay"),
-                new Game("Object Design", "Rebecca Wirfs-Brock", "Software")
+                new Game("Tetris", "4'99€", "7"),
+                new Game("Grand Theft Auto V", "24'99€", "18"),
+                new Game("Call Of Duty: Modern Warfare 3", "44'99€", "16"),
+                new Game("Halo 3", "44'99€", "12")
         ));
     }
 }

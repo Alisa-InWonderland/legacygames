@@ -2,6 +2,7 @@ package org.factoriaf5.legacygames;
 
 import org.factoriaf5.legacygames.repositories.Game;
 import org.factoriaf5.legacygames.repositories.GameRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,6 +19,10 @@ class LegacygamesApplicationTests {
 
 	@Autowired
 	MockMvc mockMvc;
+	@BeforeEach
+	void setUp() {
+		gameRepository.deleteAll();
+	}
 
 	@Test
 	void loadsTheGamePage() throws Exception {
