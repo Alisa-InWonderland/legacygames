@@ -7,30 +7,32 @@
 }
 
 body {
+    width: 100%;
     letter-spacing: 0.03em;
     line-height: 1.6;
     font-family: "Open Sans", sans-serif;
 }
 
-.container {
+.page-container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 .header {
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     background: linear-gradient(to bottom, #f06d1e, #f65622, #fd3627);
     gap: 30px;
-    align-items: center;
 }
-
 
 .nav ul {
     display: flex;
     justify-content: space-between;
     gap: 30px;
     padding: 0;
+    margin: 0 auto;
 }
 
 ul li {
@@ -45,7 +47,6 @@ ul li {
     max-width: 1200px;
     margin: 0 auto;
     flex-grow: 1;
-
 }
 
 .title {
@@ -90,16 +91,37 @@ ul li {
     font-weight: 600;
 }
 
-.container-card .card p {
-    padding: 0 1rem;
+.games-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10px;
     font-size: 16px;
     font-weight: 300;
+    border-spacing: 10px;
+    text-align: left;
 }
 
-.container-card .card a {
-    font-weight: 500;
-    text-decoration: none;
-    color: #3498db;
+.table-title {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+th, td {
+    padding: 10px;
+}
+
+
+#btn-orange {
+    background-color: #FFAA05;
+    border: none;
+}
+
+#btn-red {
+    background-color: #FC3727;
+    border: none;
 }
 
 .footer {

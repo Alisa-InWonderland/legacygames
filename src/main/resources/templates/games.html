@@ -2,24 +2,53 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments/head"></head>
+
 <body>
-<section>
+    <div class="page-container">
 
+        <header th:replace="fragments/header"></header>
 
-    <header th:replace="fragments/header"></header>
-    <main class="main">
-        <div class="container-card">
-            <div class="card">
-            <h1 th:text="${title}"></h1>
-            <p th:text="${games}"></p>
-            </div>
-        </div>
-    </main>
+        <main class="main">
+            <section>
 
-    <footer th:replace="fragments/footer">
-    </footer>
-</div>
-</section>
+                <h1 class="title">Games</h1>
+
+                <div class="container-card">
+
+                    <div class="card" th:each="game: ${games}">
+
+                        <img src="assets/img1.jpg">
+                        <table class="games-table">
+                            <caption class="table-title" th:text="${game.title}"></caption>
+                            <!--<tr>
+                                <th scope="row">Category:</th>
+                                <td th:text="${game.category}">Category</td>
+                            </tr>-->
+                            <tr>
+                                <th scope="row">PEGI:</th>
+                                <td th:text="${game.PEGI}">Pegi</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Price:</th>
+                                <td th:text="${game.price}">20$</td>
+                            </tr>
+                            <td>
+                                <a id="btn-orange" class="btn btn-success btn-sm" th:href="'/games/edit/'+${game.id}">Edit</a>
+                            </td>
+                            <td>
+                                <a id="btn-red" class="btn btn-danger btn-sm" th:href="'/games/delete/'+${game.id}">Delete</a>
+                            </td>
+                        </table>
+
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer th:replace="fragments/footer"></footer>
+
+    </div>
 </body>
 
 </html>
