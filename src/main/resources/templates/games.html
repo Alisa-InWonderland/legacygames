@@ -3,21 +3,23 @@
 
 <head th:replace="fragments/head"></head>
 <body>
-<div class="container">
+<section>
+
 
     <header th:replace="fragments/header"></header>
     <main class="main">
-        <section class="container">
+        <div class="container-card">
+            <div class="card">
             <h1 th:text="${title}"></h1>
             <p th:text="${games}"></p>
-        </section>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer">
-        <h2>Footer</h2>
+    <footer th:replace="fragments/footer">
     </footer>
 </div>
-
+</section>
 </body>
 
 </html>
