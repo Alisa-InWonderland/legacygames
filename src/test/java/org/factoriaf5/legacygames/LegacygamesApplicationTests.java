@@ -39,7 +39,7 @@ class LegacygamesApplicationTests {
 
 		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7 años"));
 
-		mockMvc.perform(get("/games"))
+		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("games"))
 				.andExpect(model().attribute("games", hasItem(game)));
