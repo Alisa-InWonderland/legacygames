@@ -11,10 +11,10 @@ import java.util.List;
 
 @Controller
     public class GameController {
-        @GetMapping("/")
+        /*@GetMapping("/")
         public String game() {
-            return "games";
-        }
+            return "games";*/
+
 
     private GameRepository gameRepository;
 
@@ -23,10 +23,10 @@ import java.util.List;
         this.gameRepository = gameRepository;
     }
 
-    @GetMapping("games")
+    @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-        model.addAttribute("title", "Game list");
+//        model.addAttribute("title", "Game list");
         model.addAttribute("games", games);
         return "games";
     }
