@@ -22,17 +22,15 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-<<<<<<< HEAD
-=======
+
         model.addAttribute("title", "Game list");
->>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
+
         model.addAttribute("games", games);
         return "games";
     }
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -45,11 +43,17 @@ import java.util.List;
     }
 
     @PostMapping("/add")
-    String addBook(@ModelAttribute Game game) {
+    String addGame(@ModelAttribute Game game) {
         gameRepository.save(game);
         return "redirect:/";
     }
-=======
->>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
+
+    @GetMapping("/delete/{id}")
+    String removeGame(@PathVariable Long id) {
+        gameRepository.findById(id);
+        gameRepository.deleteById(id);
+        return "redirect:/";
+    }
+
 }
 
