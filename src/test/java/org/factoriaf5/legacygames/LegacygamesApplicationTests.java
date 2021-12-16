@@ -8,8 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.hamcrest.Matchers.hasItem;
+
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -43,5 +49,31 @@ class LegacygamesApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(view().name("games"))
 				.andExpect(model().attribute("games", hasItem(game)));
+	}
+
+	@Test
+	void returnsAFormToAddNewGames() throws Exception {
+		mockMvc.perform(get("/add"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("games/edit"));
+	}
+
+	@Test
+	void allowsToCreateANewGame() throws Exception {
+		mockMvc.perform(post("/add")
+						.param("title", "Harry Potter")
+						.param("price", "25.99€")
+						.param("PEGI", "21")
+				)
+				.andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("/"))
+		;
+
+		List<Game> existingGames = (List<Game>) gameRepository.findAll();
+		assertThat(existingGames, contains(allOf(
+				hasProperty("title", equalTo("Harry Potter")),
+				hasProperty("price", equalTo("25.99€")),
+				hasProperty("PEGI", equalTo("21"))
+		)));
 	}
 }

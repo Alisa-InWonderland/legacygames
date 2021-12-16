@@ -11,10 +11,6 @@ import java.util.List;
 
 @Controller
     public class GameController {
-        /*@GetMapping("/")
-        public String game() {
-            return "games";*/
-
 
     private GameRepository gameRepository;
 
@@ -26,9 +22,27 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-//        model.addAttribute("title", "Game list");
         model.addAttribute("games", games);
         return "games";
+    }
+
+
+
+
+
+
+    @GetMapping("/add")
+    String getForm(Model model){
+        Game game= new Game();
+        model.addAttribute("title", "Create new game");
+        model.addAttribute("game", game);
+        return "games/edit";
+    }
+
+    @PostMapping("/add")
+    String addBook(@ModelAttribute Game game) {
+        gameRepository.save(game);
+        return "redirect:/";
     }
 }
 
