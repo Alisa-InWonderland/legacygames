@@ -26,9 +26,15 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-//        model.addAttribute("title", "Game list");
+        model.addAttribute("title", "Game list");
         model.addAttribute("games", games);
         return "games";
+    }
+
+    @GetMapping("games/add")
+    String addGames(@ModelAttribute Game game) {
+        gameRepository.save(game);
+        return "games/add";
     }
 }
 
