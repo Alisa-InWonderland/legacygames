@@ -31,10 +31,7 @@ import java.util.List;
         return "games";
     }
 
-    @GetMapping("games/add")
-    String addGames(@ModelAttribute Game game) {
-        gameRepository.save(game);
-        return "games/add";
-    }
+
+
 }
 
