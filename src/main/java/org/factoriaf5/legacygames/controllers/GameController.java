@@ -22,12 +22,17 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
+<<<<<<< HEAD
+=======
+        model.addAttribute("title", "Game list");
+>>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
         model.addAttribute("games", games);
         return "games";
     }
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -44,5 +49,7 @@ import java.util.List;
         gameRepository.save(game);
         return "redirect:/";
     }
+=======
+>>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
 }
 

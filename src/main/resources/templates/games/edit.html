@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 
@@ -40,8 +41,43 @@
 <!--!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head  th:replace="fragments/head"></head>
+=======
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head"></head>
+>>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
 
 <body>
+<header th:replace="fragments/header"></header>
+
+    <main class="main">
+        <section>
+        <form th:action="@{/add}" th:object="${game}" method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{id}">
+                <label class="col-md2" for="title">Title</label>
+                <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                       placeholder="Enter title">
+            </div>
+            <div class="form-group">
+                <label class="col-md2" for="author">Author</label>
+                <input th:field="*{price}" type="text" class="col-md6 form-control form-control-sm" id="author"
+                       placeholder="Enter author">
+            </div>
+            <div class="form-group">
+                <label class="col-md2" for="category">Category</label>
+                <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" id="category"
+                       placeholder="Enter category">
+            </div>
+            <div class="card-footer ">
+                <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+            </div>
+        </form>
+        </section>
+    </main>
+
+    <footer th:replace="fragments/footer"></footer>
 
 <header th:replace="fragments/header"></header>
 
@@ -74,5 +110,10 @@
 <footer th:replace="fragments/footer"></footer>
 
 </body>
+<<<<<<< HEAD
 </html>-->
 
+=======
+
+</html>
+>>>>>>> 817e994522ccd7faf994d667a04fb5386d9fce34
