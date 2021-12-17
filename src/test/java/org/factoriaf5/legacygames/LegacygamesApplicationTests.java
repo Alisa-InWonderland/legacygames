@@ -9,7 +9,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.awt.print.Book;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -84,5 +86,15 @@ class LegacygamesApplicationTests {
 				.andExpect(view().name("games/edit"))
 				.andExpect(model().attribute("game", game))
 				.andExpect(model().attribute("title", "Edit game"));
+	}
+
+	@Test
+	void allowsToDeleteAGame() throws Exception {
+		Game game = gameRepository.save(new Game("Tetris", "12€", "12"));
+		mockMvc.perform(get("/delete/" + game.getId()))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(redirectedUrl("/"));
+
+		assertThat(gameRepository.findById(game.getId()), equalTo(Optional.empty()));
 	}
 }
