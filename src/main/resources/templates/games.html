@@ -10,7 +10,7 @@
 
         <main class="main">
             <section>
-                <h1 th:text="${title}"></h1>
+                <h1 class="title" th:text="${title}"></h1>
                 <div class="container-card">
                     <div class="card" th:each="game: ${games}">
                         <img class="image" th:src="@{'/assets/'+${game.image}}" alt="juego" th:attr="alt=${game.title}">

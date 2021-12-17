@@ -22,7 +22,7 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-        model.addAttribute("title", "Game list");
+        model.addAttribute("title", "Legacy Games");
         model.addAttribute("games", games);
         return "games";
     }
@@ -30,7 +30,7 @@ import java.util.List;
     @GetMapping("/add")
     String getForm(Model model){
         Game game= new Game();
-        model.addAttribute("title", "Create new game");
+        model.addAttribute("title", "Add game");
         model.addAttribute("game", game);
         return "games/edit";
     }

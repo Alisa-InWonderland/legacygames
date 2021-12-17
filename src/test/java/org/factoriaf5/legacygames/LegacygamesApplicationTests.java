@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.awt.print.Book;
@@ -33,6 +34,7 @@ class LegacygamesApplicationTests {
 	}
 
 	@Test
+	@WithMockUser
 	void loadsTheGamePage() throws Exception {
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
@@ -43,6 +45,7 @@ class LegacygamesApplicationTests {
 	GameRepository gameRepository;
 
 	@Test
+	@WithMockUser
 	void returnsTheExistingGames() throws Exception {
 
 		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "racing", "img1"));
@@ -54,6 +57,7 @@ class LegacygamesApplicationTests {
 	}
 
 	@Test
+	@WithMockUser
 	void returnsAFormToAddNewGames() throws Exception {
 		mockMvc.perform(get("/add"))
 				.andExpect(status().isOk())
@@ -61,6 +65,7 @@ class LegacygamesApplicationTests {
 	}
 
 	@Test
+	@WithMockUser
 	void allowsToCreateANewGame() throws Exception {
 		mockMvc.perform(post("/add")
 						.param("title", "Harry Potter")
@@ -71,8 +76,7 @@ class LegacygamesApplicationTests {
 
 				)
 				.andExpect(status().is3xxRedirection())
-				.andExpect(redirectedUrl("/"))
-		;
+				.andExpect(redirectedUrl("/"));
 
 		List<Game> existingGames = (List<Game>) gameRepository.findAll();
 		assertThat(existingGames, contains(allOf(
@@ -84,7 +88,9 @@ class LegacygamesApplicationTests {
 
 		)));
 	}
+
 	@Test
+	@WithMockUser
 	void returnsAFormToEditGames() throws Exception {
 		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "racing", "img1"));
 		mockMvc.perform(get("/edit/" + game.getId()))
@@ -95,6 +101,7 @@ class LegacygamesApplicationTests {
 	}
 
 	@Test
+	@WithMockUser
 	void allowsToDeleteAGame() throws Exception {
 		Game game = gameRepository.save(new Game("Tetris", "12€", "12", "puzzle", "img3"));
 		mockMvc.perform(get("/delete/" + game.getId()))
@@ -102,5 +109,11 @@ class LegacygamesApplicationTests {
 				.andExpect(redirectedUrl("/"));
 
 		assertThat(gameRepository.findById(game.getId()), equalTo(Optional.empty()));
+	}
+
+	@Test
+	void returns401() throws Exception {
+		mockMvc.perform(get("/"))
+				.andExpect(status().isUnauthorized());
 	}
 }
