@@ -43,7 +43,7 @@ class LegacygamesApplicationTests {
 	@Test
 	void returnsTheExistingGames() throws Exception {
 
-		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7 años"));
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7"));
 
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
@@ -75,5 +75,14 @@ class LegacygamesApplicationTests {
 				hasProperty("price", equalTo("25.99€")),
 				hasProperty("PEGI", equalTo("21"))
 		)));
+	}
+	@Test
+	void returnsAFormToEditGames() throws Exception {
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7"));
+		mockMvc.perform(get("/edit/" + game.getId()))
+				.andExpect(status().isOk())
+				.andExpect(view().name("games/edit"))
+				.andExpect(model().attribute("game", game))
+				.andExpect(model().attribute("title", "Edit game"));
 	}
 }

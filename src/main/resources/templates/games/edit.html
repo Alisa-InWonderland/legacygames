@@ -4,10 +4,12 @@
 <head th:replace="fragments/head"></head>
 
 <body>
+    <div class="page-container">
 <header th:replace="fragments/header"></header>
 
 <main class="main">
     <section>
+        <h1 th:text="${title}"></h1>
         <form th:action="@{/add}" th:object="${game}" method="post">
             <div class="form-group">
                 <input type="hidden" th:field="*{id}">
@@ -33,7 +35,7 @@
 </main>
 
 <footer th:replace="fragments/footer"></footer>
-
+    </div>
 </body>
 
 </html>

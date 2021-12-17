@@ -22,17 +22,10 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-
         model.addAttribute("title", "Game list");
-
         model.addAttribute("games", games);
         return "games";
     }
-
-
-
-
-
 
     @GetMapping("/add")
     String getForm(Model model){
@@ -46,6 +39,14 @@ import java.util.List;
     String addGame(@ModelAttribute Game game) {
         gameRepository.save(game);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit/{id}")
+    String editGame(Model model, @PathVariable Long id){
+        Game game = gameRepository.findById(id).get();
+        model.addAttribute("game", game);
+        model.addAttribute("title", "Edit game");
+        return "games/edit";
     }
 
     @GetMapping("/delete/{id}")
