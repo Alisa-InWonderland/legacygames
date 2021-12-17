@@ -45,7 +45,7 @@ class LegacygamesApplicationTests {
 	@Test
 	void returnsTheExistingGames() throws Exception {
 
-		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7"));
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "racing", "img1"));
 
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
@@ -66,6 +66,9 @@ class LegacygamesApplicationTests {
 						.param("title", "Harry Potter")
 						.param("price", "25.99€")
 						.param("PEGI", "21")
+						.param("category", "adventure")
+						.param("image", "img2")
+
 				)
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/"))
@@ -75,12 +78,15 @@ class LegacygamesApplicationTests {
 		assertThat(existingGames, contains(allOf(
 				hasProperty("title", equalTo("Harry Potter")),
 				hasProperty("price", equalTo("25.99€")),
-				hasProperty("PEGI", equalTo("21"))
+				hasProperty("PEGI", equalTo("21")),
+				hasProperty("category", equalTo("adventure")),
+				hasProperty("image", equalTo("img2"))
+
 		)));
 	}
 	@Test
 	void returnsAFormToEditGames() throws Exception {
-		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7"));
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "racing", "img1"));
 		mockMvc.perform(get("/edit/" + game.getId()))
 				.andExpect(status().isOk())
 				.andExpect(view().name("games/edit"))
@@ -90,7 +96,7 @@ class LegacygamesApplicationTests {
 
 	@Test
 	void allowsToDeleteAGame() throws Exception {
-		Game game = gameRepository.save(new Game("Tetris", "12€", "12"));
+		Game game = gameRepository.save(new Game("Tetris", "12€", "12", "puzzle", "img3"));
 		mockMvc.perform(get("/delete/" + game.getId()))
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/"));

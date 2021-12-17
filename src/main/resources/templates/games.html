@@ -17,13 +17,14 @@
 
                     <div class="card" th:each="game: ${games}">
 
-                        <img src="assets/img1.jpg">
+                        <img class="image" th:src="@{'/assets/'+${game.image}}" alt="juego" th:attr="alt=${game.title}">
+
                         <table class="games-table">
                             <caption class="table-title" th:text="${game.title}"></caption>
-                            <!--<tr>
+                            <tr>
                                 <th scope="row">Category:</th>
                                 <td th:text="${game.category}">Category</td>
-                            </tr>-->
+                            </tr>
                             <tr>
                                 <th scope="row">PEGI:</th>
                                 <td th:text="${game.PEGI}">Pegi</td>
