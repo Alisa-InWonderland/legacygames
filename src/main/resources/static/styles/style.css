@@ -25,6 +25,7 @@ body {
     align-items: center;
     background: linear-gradient(to bottom, #f06d1e, #f65622, #fd3627);
     gap: 30px;
+    margin-bottom: 30px;
 }
 .nav{
     width: 100%;
@@ -53,6 +54,10 @@ ul li {
     max-width: 1200px;
     margin: 0 auto;
     flex-grow: 1;
+}
+
+section {
+    min-width: 350px;
 }
 
 .title {

@@ -4,38 +4,38 @@
 <head th:replace="fragments/head"></head>
 
 <body>
-    <div class="page-container">
-<header th:replace="fragments/header"></header>
+<div class="page-container">
+    <header th:replace="fragments/header"></header>
 
-<main class="main">
-    <section>
-        <h1 th:text="${title}"></h1>
-        <form th:action="@{/add}" th:object="${game}" method="post">
-            <div class="form-group">
-                <input type="hidden" th:field="*{id}">
-                <label class="col-md2" for="title">Title</label>
-                <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
-                       placeholder="Enter title">
-            </div>
-            <div class="form-group">
-                <label class="col-md2" for="price">Price</label>
-                <input th:field="*{price}" type="text" class="col-md6 form-control form-control-sm" id="price"
-                       placeholder="Enter price">
-            </div>
-            <div class="form-group">
-                <label class="col-md2" for="pegi">PEGI</label>
-                <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" id="pegi"
-                       placeholder="Enter PEGI">
-            </div>
-            <div class="card-footer ">
-                <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
-            </div>
-        </form>
-    </section>
-</main>
+    <main class="main">
+        <section>
+            <h1 th:text="${title}"></h1>
+            <form th:action="@{/add}" th:object="${game}" method="post">
+                <div class="form-group">
+                    <input type="hidden" th:field="*{id}">
+                    <label class="col-md2" for="title">Title</label>
+                    <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                           placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label class="col-md2" for="price">Price</label>
+                    <input th:field="*{price}" type="text" class="col-md6 form-control form-control-sm" id="price"
+                           placeholder="Enter price">
+                </div>
+                <div class="form-group">
+                    <label class="col-md2" for="pegi">PEGI</label>
+                    <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" id="pegi"
+                           placeholder="Enter PEGI">
+                </div>
+                <div class="card-footer ">
+                    <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+                </div>
+            </form>
+        </section>
+    </main>
 
-<footer th:replace="fragments/footer"></footer>
-    </div>
+    <footer th:replace="fragments/footer"></footer>
+</div>
 </body>
 
 </html>
