@@ -17,6 +17,7 @@ import java.util.Optional;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.core.AllOf.allOf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -68,11 +69,12 @@ class LegacygamesApplicationTests {
 	@WithMockUser
 	void allowsToCreateANewGame() throws Exception {
 		mockMvc.perform(post("/add")
+						.with(csrf())
 						.param("title", "Harry Potter")
 						.param("price", "25.99€")
 						.param("PEGI", "21")
 						.param("category", "adventure")
-						.param("image", "img2")
+						.param("image", "img2.jpg")
 
 				)
 				.andExpect(status().is3xxRedirection())
@@ -84,7 +86,7 @@ class LegacygamesApplicationTests {
 				hasProperty("price", equalTo("25.99€")),
 				hasProperty("PEGI", equalTo("21")),
 				hasProperty("category", equalTo("adventure")),
-				hasProperty("image", equalTo("img2"))
+				hasProperty("image", equalTo("img2.jpg"))
 
 		)));
 	}
@@ -103,7 +105,7 @@ class LegacygamesApplicationTests {
 	@Test
 	@WithMockUser
 	void allowsToDeleteAGame() throws Exception {
-		Game game = gameRepository.save(new Game("Tetris", "12€", "12", "puzzle", "img3"));
+		Game game = gameRepository.save(new Game("Tetris", "12€", "12", "puzzle", "img3.jpg"));
 		mockMvc.perform(get("/delete/" + game.getId()))
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/"));
