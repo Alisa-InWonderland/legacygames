@@ -18,12 +18,12 @@ public class SampleDataLoader {
     @PostConstruct
     public void loadSampleData() {
         gameRepository.saveAll(List.of(
-                new Game("Super Mario Bros", "14'99€", "7", "Platform", "def-photo.jpg"),
-                new Game("Mario Kart Wii", "9'99€", "7", "Racing", "def-photo.jpg"),
-                new Game("Tetris", "4'99€", "7", "Puzzle", "def-photo.jpg"),
-                new Game("Grand Theft Auto V", "24'99€", "18", "Action", "def-photo.jpg"),
-                new Game("Call Of Duty: Modern Warfare 3", "44'99€", "16", "Role-Playing", "def-photo.jpg"),
-                new Game("Halo 3", "44'99€", "12", "Shooter", "def-photo.jpg")
+                new Game("Super Mario Bros", "14'99€", "7", "Platform", "superMarioBros2006.webp"),
+                new Game("Mario Kart Wii", "9'99€", "7", "Racing", "Mario-kart-wii2008.webp"),
+                new Game("Tetris", "4'99€", "7", "Puzzle", "tetris1989.jpg"),
+                new Game("Grand Theft Auto V", "24'99€", "18", "Action", "granDeftAutoV2008.jpg"),
+                new Game("Call Of Duty: Modern Warfare 3", "44'99€", "16", "Role-Playing", "callOfDutyMW32010.jpg"),
+                new Game("Halo 3", "44'99€", "12", "Shooter", "halo32007.jpg")
         ));
     }
 }
