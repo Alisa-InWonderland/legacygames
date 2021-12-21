@@ -9,8 +9,22 @@
         <header th:replace="fragments/header"></header>
 
         <main class="main">
+
             <section>
                 <h1 class="title" th:text="${title}"></h1>
+                <ul class="categories">
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Platform</a></li>
+                    <li><a href="#">Racing</a></li>
+                    <li><a href="#">Role-Playing</a></li>
+                    <li><a href="#">Puzzle</a></li>
+                    <li><a href="#">Misc</a></li>
+                    <li><a href="#">Shooter</a></li>
+                    <li><a href="#">Simulation</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Fighting</a></li>
+                    <li><a href="#">Adventure</a></li>
+                </ul>
                 <div class="container-card">
                     <div class="card" th:each="game: ${games}">
                         <img class="image" th:src="@{'/assets/'+${game.image}}" alt="juego" th:attr="alt=${game.title}">

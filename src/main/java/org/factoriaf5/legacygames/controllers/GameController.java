@@ -22,7 +22,7 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
-        model.addAttribute("title", "Legacy Games");
+        model.addAttribute("title", "Games");
         model.addAttribute("games", games);
         return "games";
     }

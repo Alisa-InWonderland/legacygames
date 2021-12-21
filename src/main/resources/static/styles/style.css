@@ -52,7 +52,7 @@ ul li {
 }
 
 .logo {
-    max-width: 90px;
+    max-width: 100px;
 }
 
 .main {
@@ -74,6 +74,23 @@ section {
     font-weight: 100;
     font-family: "Roboto", sans-serif;
     margin: 20px 0;
+}
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+}
+
+.categories a {
+    text-decoration: none;
+    color: #6a6a6a;
+    transition: 0.3s;
+}
+
+.categories a:hover {
+    color: #FFAA05;
+
 }
 
 .container-card {
