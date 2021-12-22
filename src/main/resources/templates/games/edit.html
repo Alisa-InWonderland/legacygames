@@ -10,7 +10,52 @@
     <main class="main">
         <section>
             <h1 class="title" th:text="${title}"></h1>
-            <form th:action="@{/add}" th:object="${game}" method="post">
+            <div class="form-wrapper">
+                <div class="imagen">
+                    <img src="/assets/def-photo.jpg">
+                </div>
+                <div class="form-container">
+                    <form class="survey-form" th:action="@{/add}" th:object="${game}" method="post">
+                        <div class="input-container">
+                            <input type="hidden" th:field="*{id}">
+                            <label class="col-md2" for="title">Title</label>
+                            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                                   placeholder="Enter title">
+                        </div>
+
+                        <div class="input-container">
+                            <label class="col-md2" for="category">Category</label>
+                            <input th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
+                                   placeholder="Enter category">
+                        </div>
+
+                        <div class="input-container">
+                            <label class="col-md2" for="price">Price</label>
+                            <input th:field="*{price}" type="text" class="col-md6 form-control form-control-sm" id="price"
+                                   placeholder="Enter price">
+                        </div>
+
+                        <div class="input-container">
+                            <label class="col-md2" for="pegi">PEGI</label>
+                            <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" id="pegi"
+                                   placeholder="Enter PEGI">
+                        </div>
+
+                        <div class="input-container">
+                            <label class="col-md2" for="image">Image</label>
+                            <input th:field="*{image}" type="text" class="col-md6 form-control form-control-sm" id="image"
+                                   placeholder="Enter image">
+                        </div>
+                        <div class='survey-btn-container'>
+                            <button class='btn submit-btn'>
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!-- <form th:action="@{/add}" th:object="${game}" method="post">
                 <div class="form-group">
                     <input type="hidden" th:field="*{id}">
                     <label class="col-md2" for="title">Title</label>
@@ -45,7 +90,7 @@
                 <div class="card-footer ">
                     <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
                 </div>
-            </form>
+            </form> -->
         </section>
     </main>
 
