@@ -26,29 +26,34 @@
                     <li><a href="#">Adventure</a></li>
                 </ul>
                 <div class="container-card">
-                    <div class="card" th:each="game: ${games}">
+                    <div class="game-card" th:each="game: ${games}">
                         <img class="image" th:src="@{'/assets/'+${game.image}}" alt="juego" th:attr="alt=${game.title}">
 
                         <table class="games-table">
                             <caption class="table-title" th:text="${game.title}"></caption>
-                            <tr>
-                                <th scope="row">Category:</th>
-                                <td th:text="${game.category}">Category</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">PEGI:</th>
-                                <td th:text="${game.PEGI}">Pegi</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Price:</th>
-                                <td th:text="${game.price}">20$</td>
-                            </tr>
-                            <td>
-                                <a id="btn-orange" class="btn btn-success btn-sm" th:href="'/edit/'+${game.id}">Edit</a>
-                            </td>
-                            <td>
-                                <a id="btn-red" class="btn btn-danger btn-sm" th:href="'/delete/'+${game.id}">Delete</a>
-                            </td>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Category:</th>
+                                    <td th:text="${game.category}">Category</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">PEGI:</th>
+                                    <td th:text="${game.PEGI}">Pegi</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Price:</th>
+                                    <td th:text="${game.price}">20$</td>
+                                </tr>
+
+                                <tr>
+                                <td>
+                                    <a id="btn-orange" class="btn btn-success btn-sm" th:href="'/edit/'+${game.id}">Edit</a>
+                                </td>
+                                <td>
+                                    <a id="btn-red" class="btn btn-danger btn-sm" th:href="'/delete/'+${game.id}">Delete</a>
+                                </td>
+                                </tr>
+                            </tbody>
                         </table>
 
                     </div>
