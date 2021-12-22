@@ -10,10 +10,12 @@
     <main class="main">
         <section>
             <h1 class="title" th:text="${title}"></h1>
-            <div class="form-wrapper">
-                <div class="imagen">
+            <div class="form-wrapper ">
+
+                <div class="image-form">
                     <img src="/assets/def-photo.jpg">
                 </div>
+
                 <div class="form-container">
                     <form class="survey-form" th:action="@{/add}" th:object="${game}" method="post">
                         <div class="input-container">
@@ -47,14 +49,13 @@
                                    placeholder="Enter image">
                         </div>
                         <div class='survey-btn-container'>
-                            <button class='btn submit-btn'>
+                            <button class='btn btn-submit'>
                                 Submit
                             </button>
                         </div>
                     </form>
                 </div>
 
-            </div>
             <!-- <form th:action="@{/add}" th:object="${game}" method="post">
                 <div class="form-group">
                     <input type="hidden" th:field="*{id}">
@@ -91,6 +92,7 @@
                     <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
                 </div>
             </form> -->
+                </div>
         </section>
     </main>
 
