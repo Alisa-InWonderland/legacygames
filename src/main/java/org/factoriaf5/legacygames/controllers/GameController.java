@@ -24,7 +24,7 @@ import java.util.List;
     }
 
     @GetMapping("/")
-    String listGames(Model model) {
+    String listGames(Model model, @RequestParam(required = false) String category)  {
         List<Game> games = (List<Game>) gameRepository.findAll();
         model.addAttribute("title", "Games");
         model.addAttribute("categories", categoryRepository.findAll());
@@ -62,6 +62,5 @@ import java.util.List;
         gameRepository.deleteById(id);
         return "redirect:/";
     }
-
 }
 

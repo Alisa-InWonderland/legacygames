@@ -125,4 +125,16 @@ class LegacygamesApplicationTests {
 		mockMvc.perform(get("/"))
 				.andExpect(status().isUnauthorized());
 	}
+	@Test
+	@WithMockUser
+	void returnsGamesFromAGivenCategory() throws Exception {
+
+		Game racingGame = gameRepository.save(new Game("Mario Kart Wii", "9'99€", "7","racing","Mario-kart-wii2008.webp"));
+
+
+		mockMvc.perform(get("/?category=racing"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("games"))
+				.andExpect(model().attribute("games", hasItem(racingGame)));
+	}
 }

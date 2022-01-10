@@ -1,6 +1,8 @@
 package org.factoriaf5.legacygames;
 
 import org.factoriaf5.legacygames.repositories.CategoryRepository;
+import org.factoriaf5.legacygames.repositories.Game;
+import org.factoriaf5.legacygames.repositories.GameRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +36,5 @@ public class CategoryRepositoryTest {
                 hasProperty("name", is("Racing"))
         ));
     }
+
 }
