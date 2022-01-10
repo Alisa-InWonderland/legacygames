@@ -62,8 +62,15 @@ class LegacygamesApplicationTests {
 	void returnsAFormToAddNewGames() throws Exception {
 		mockMvc.perform(get("/add"))
 				.andExpect(status().isOk())
-				.andExpect(view().name("games/edit"));
-	}
+				.andExpect(view().name("games/edit"))
+				.andExpect(model().attributeExists("game"))
+				.andExpect(model().attribute("title", "Add game"))
+				.andExpect(model().attribute("categories", hasItems(
+						hasProperty("name", is("Sports")),
+						hasProperty("name", is("Platform")),
+						hasProperty("name", is("Racing"))
+					)));
+		}
 
 	@Test
 	@WithMockUser

@@ -13,7 +13,7 @@
             <div class="form-wrapper ">
 
                 <div class="image-form">
-                    <img src="/assets/def-photo.jpg">
+                    <img src="/assets/def-photo.jpg"  alt="juego" th:attr="alt=${game.title}">
                 </div>
 
                 <div class="form-container">
@@ -27,8 +27,13 @@
 
                         <div class="input-container">
                             <label class="col-md2" for="category">Category</label>
-                            <input th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category"
-                                   placeholder="Enter category">
+                            <select th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category">
+                                <option th:each="category: ${categories}"
+                                        th:value="${category.name}"
+                                        th:text="${category.name}"
+                                >
+                                </option>
+                            </select>
                         </div>
 
                         <div class="input-container">

@@ -2,6 +2,7 @@ package org.factoriaf5.legacygames.controllers;
 
 import org.factoriaf5.legacygames.repositories.Game;
 import org.factoriaf5.legacygames.repositories.GameRepository;
+import org.factoriaf5.legacygames.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +13,21 @@ import java.util.List;
 @Controller
     public class GameController {
 
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
+    private final CategoryRepository categoryRepository;
+
 
     @Autowired
-    public GameController(GameRepository gameRepository) {
+    public GameController(GameRepository gameRepository, CategoryRepository categoryRepository) {
         this.gameRepository = gameRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping("/")
     String listGames(Model model) {
         List<Game> games = (List<Game>) gameRepository.findAll();
         model.addAttribute("title", "Games");
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("games", games);
         return "games";
     }
@@ -31,6 +36,7 @@ import java.util.List;
     String getForm(Model model){
         Game game= new Game();
         model.addAttribute("title", "Add game");
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("game", game);
         return "games/edit";
     }
@@ -45,6 +51,7 @@ import java.util.List;
     String editGame(Model model, @PathVariable Long id){
         Game game = gameRepository.findById(id).get();
         model.addAttribute("game", game);
+        model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("title", "Edit game");
         return "games/edit";
     }
