@@ -3,6 +3,7 @@ package org.factoriaf5.legacygames.controllers;
 import org.factoriaf5.legacygames.repositories.Game;
 import org.factoriaf5.legacygames.repositories.GameRepository;
 import org.factoriaf5.legacygames.repositories.CategoryRepository;
+import org.factoriaf5.legacygames.repositories.PEGIRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,7 @@ import java.util.List;
         model.addAttribute("categories", categoryRepository.findAll());
         return "games";
     }
+
 
     @GetMapping("/add")
     String getForm(Model model){
@@ -68,6 +70,7 @@ import java.util.List;
         return gameRepository.findGamesByCategoryEquals(category);
 
     }
+
 
 }
 
