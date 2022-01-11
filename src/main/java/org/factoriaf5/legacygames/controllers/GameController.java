@@ -27,8 +27,9 @@ import java.util.List;
     @GetMapping("/")
     String listGames(Model model, @RequestParam(required = false) String category)  {
         model.addAttribute("title", "Game list");
-        model.addAttribute("games", getGames(category));
+        model.addAttribute("games", getGames(category, PEGI);
         model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("PEGI", PEGIRepository.findAll());
         return "games";
     }
 
@@ -63,12 +64,19 @@ import java.util.List;
         gameRepository.deleteById(id);
         return "redirect:/";
     }
-    private List<Game> getGames(String category) {
+    private List<Game> getGames(String category, String PEGI) {
         if (category == null) {
             return gameRepository.findAll();
         }
-        return gameRepository.findGamesByCategoryEquals(category);
-
+        if (category != null) {
+            return gameRepository.findGamesByCategoryEquals(category);
+        }
+       if (PEGI == null {
+            return gameRepository.findAll();
+        }
+        if (PEGI != null){
+            return gameRepository.findGamesByPEGIEquals(PEGI);
+        }
     }
 
 
