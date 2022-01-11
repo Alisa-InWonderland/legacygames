@@ -13,7 +13,7 @@
             <section>
                 <h1 class="title" th:text="${title}"></h1>
                 <ul class="categories" sec:authorize="isAuthenticated()">
-                    <li><a href="/games/">All</a></li>
+                    <li><a href="/">All</a></li>
                     <li th:each="category: ${categories}">
                         <a th:href="${'/?category='+category.name}"
                            th:text="${category.name}">
