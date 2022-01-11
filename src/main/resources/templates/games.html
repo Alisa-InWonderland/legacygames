@@ -12,23 +12,26 @@
 
             <section>
                 <h1 class="title" th:text="${title}"></h1>
-                <ul class="categories" sec:authorize="isAuthenticated()">
-                    <li><a href="/">All</a></li>
-                    <li th:each="category: ${categories}">
-                        <a th:href="${'/?category='+category.name}"
-                           th:text="${category.name}">
-                        </a>
-                    </li>
-                </ul>
-                <ul class="listaPEGI" sec:authorize="isAuthenticated()">
-                    <li th:each="PEGI: ${PEGIList}">
-                        <a th:href="${'/?PEGI='+PEGI.name}"
-                           th:text="${PEGI.name}">
-                        </a>
-                    </li>
-                </ul>
-                <div class="container-card">
-                    <div class="game-card" th:each="game: ${games}">
+                <div class="row">
+                    <div class="col-2">
+                        <h3>Categorias</h3>
+                        <ul class="categories" sec:authorize="isAuthenticated()">
+                            <li><a href="/">All</a></li>
+                            <li th:each="category: ${categories}">
+                                <a th:href="${'/?category='+category.name}"
+                                   th:text="${category.name}">
+                                </a>
+                            </li>
+                        </ul>
+                        <h3>PEGI</h3>
+                        <ul class="listaPEGI" sec:authorize="isAuthenticated()">
+                            <li th:each="PEGI: ${PEGIList}">
+                                <a th:href="${'/?PEGI='+PEGI.name}" th:text="${PEGI.name}"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-10 container-card">
+                        <div class="game-card" th:each="game: ${games}">
                         <div>
                             <img class="image" th:src="@{'/assets/'+${game.image}}" alt="juego" th:attr="alt=${game.title}">
                             <div class="table-title" th:text="${game.title}"></div>
@@ -57,12 +60,10 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
-
                     </div>
                 </div>
 
+                </div>
             </section>
         </main>
 
