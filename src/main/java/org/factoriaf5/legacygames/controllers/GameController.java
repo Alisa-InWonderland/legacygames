@@ -1,9 +1,6 @@
 package org.factoriaf5.legacygames.controllers;
 
-import org.factoriaf5.legacygames.repositories.Game;
-import org.factoriaf5.legacygames.repositories.GameRepository;
-import org.factoriaf5.legacygames.repositories.CategoryRepository;
-import org.factoriaf5.legacygames.repositories.PEGIRepository;
+import org.factoriaf5.legacygames.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,20 +13,23 @@ import java.util.List;
 
     private final GameRepository gameRepository;
     private final CategoryRepository categoryRepository;
+    private final PEGIRepository pegiRepository;
 
 
     @Autowired
-    public GameController(GameRepository gameRepository, CategoryRepository categoryRepository) {
+    public GameController(GameRepository gameRepository, CategoryRepository categoryRepository, PEGIRepository pegiRepository) {
         this.gameRepository = gameRepository;
         this.categoryRepository = categoryRepository;
+        this.pegiRepository = pegiRepository;
+
     }
 
     @GetMapping("/")
-    String listGames(Model model, @RequestParam(required = false) String category)  {
+    String listGames(Model model, @RequestParam(required = false) String category, @RequestParam(required = false) String PEGI)  {
         model.addAttribute("title", "Game list");
-        model.addAttribute("games", getGames(category, PEGI);
+        model.addAttribute("games", getGames(category, PEGI));
         model.addAttribute("categories", categoryRepository.findAll());
-        model.addAttribute("PEGI", PEGIRepository.findAll());
+        model.addAttribute("PEGIList", pegiRepository.findAll());
         return "games";
     }
 
@@ -64,21 +64,17 @@ import java.util.List;
         gameRepository.deleteById(id);
         return "redirect:/";
     }
+
     private List<Game> getGames(String category, String PEGI) {
-        if (category == null) {
-            return gameRepository.findAll();
-        }
+
         if (category != null) {
             return gameRepository.findGamesByCategoryEquals(category);
         }
-       if (PEGI == null {
-            return gameRepository.findAll();
-        }
-        if (PEGI != null){
+        if (PEGI != null) {
             return gameRepository.findGamesByPEGIEquals(PEGI);
         }
+        return gameRepository.findAll();
     }
-
 
 }
 

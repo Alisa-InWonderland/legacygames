@@ -141,4 +141,18 @@ class LegacygamesApplicationTests {
 				.andExpect(view().name("games"))
 				.andExpect(model().attribute("games", hasItem(racingGame)));
 	}
+	@Test
+	@WithMockUser
+	void returnsGamesFromAGivenPEGI() throws Exception {
+
+		Game PEGIGame = gameRepository.save(new Game("Mario Kart Wii", "9'99€", "7","racing","Mario-kart-wii2008.webp"));
+		Game PEGIGame2 = gameRepository.save(new Game("Mario Kart Wii", "9'99€", "12","racing","Mario-kart-wii2008.webp"));
+
+
+		mockMvc.perform(get("/?PEGI=7"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("games"))
+				.andExpect(model().attribute("games", hasItem(PEGIGame)))
+				.andExpect(model().attribute("games",not( hasItem(PEGIGame2))));
+	}
 }

@@ -20,6 +20,13 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="listaPEGI" sec:authorize="isAuthenticated()">
+                    <li th:each="PEGI: ${PEGIList}">
+                        <a th:href="${'/?PEGI='+PEGI.name}"
+                           th:text="${PEGI.name}">
+                        </a>
+                    </li>
+                </ul>
                 <div class="container-card">
                     <div class="game-card" th:each="game: ${games}">
                         <div>

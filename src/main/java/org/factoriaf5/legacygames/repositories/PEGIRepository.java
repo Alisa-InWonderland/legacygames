@@ -1,6 +1,10 @@
 package org.factoriaf5.legacygames.repositories;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
+
+@Repository
 
 public class PEGIRepository {
     public PEGIRepository() {
