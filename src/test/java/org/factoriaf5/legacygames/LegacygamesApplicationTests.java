@@ -49,12 +49,16 @@ class LegacygamesApplicationTests {
 	@WithMockUser
 	void returnsTheExistingGames() throws Exception {
 
-		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "racing", "img1"));
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "Racing", "img1"));
 
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("games"))
-				.andExpect(model().attribute("games", hasItem(game)));
+				.andExpect(model().attribute("games", hasItem(game)))
+				.andExpect(model().attribute("categories", hasItems(
+						hasProperty("name", is("Racing"))
+
+				)));
 	}
 
 	@Test

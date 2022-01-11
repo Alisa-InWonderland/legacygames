@@ -12,18 +12,13 @@
 
             <section>
                 <h1 class="title" th:text="${title}"></h1>
-                <ul class="categories">
-                    <li><a href="#">Sports</a></li>
-                    <li><a href="#">Platform</a></li>
-                    <li><a href="#">Racing</a></li>
-                    <li><a href="#">Role-Playing</a></li>
-                    <li><a href="#">Puzzle</a></li>
-                    <li><a href="#">Misc</a></li>
-                    <li><a href="#">Shooter</a></li>
-                    <li><a href="#">Simulation</a></li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Fighting</a></li>
-                    <li><a href="#">Adventure</a></li>
+                <ul class="categories" sec:authorize="isAuthenticated()">
+                    <li><a href="/games/">All</a></li>
+                    <li th:each="category: ${categories}">
+                        <a th:href="${'/?category='+category.name}"
+                           th:text="${category.name}">
+                        </a>
+                    </li>
                 </ul>
                 <div class="container-card">
                     <div class="game-card" th:each="game: ${games}">
