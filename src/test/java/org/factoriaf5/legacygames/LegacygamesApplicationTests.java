@@ -49,7 +49,7 @@ class LegacygamesApplicationTests {
 	@WithMockUser
 	void returnsTheExistingGames() throws Exception {
 
-		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "Racing", "img1"));
+		Game game = gameRepository.save(new Game("Stardew Valley", "9'79€","7", "Racing", "img1", "10%"));
 
 		mockMvc.perform(get("/"))
 				.andExpect(status().isOk())

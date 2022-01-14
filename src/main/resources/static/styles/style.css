@@ -261,3 +261,7 @@ input[type="text"]:focus, select[type="text"]:focus {
     width: 100%;
 }
 
+.new-price {
+    text-decoration: line-through red;
+}
+

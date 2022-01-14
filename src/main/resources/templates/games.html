@@ -46,9 +46,13 @@
                                     <th scope="row">PEGI:</th>
                                     <td th:text="${game.PEGI}">Pegi</td>
                                 </tr>
-                                <tr>
+                                <tr id="tr-price">
                                     <th scope="row">Price:</th>
-                                    <td th:text="${game.price}">20$</td>
+                                    <td id="price" th:text="${game.price}">4</td>
+                                </tr>
+                                <tr id="discount-row">
+                                    <th scope="row">Discount:</th>
+                                    <td id="discount" th:text="${game.discount}">No hay descuento</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -70,6 +74,7 @@
         <footer th:replace="fragments/footer"></footer>
 
     </div>
+    <script  type="text/javascript" th:src="@{/js/main.js}"></script>
 </body>
 
 </html>
