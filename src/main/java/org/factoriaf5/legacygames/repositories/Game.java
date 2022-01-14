@@ -16,17 +16,30 @@ import java.util.Objects;
         private String PEGI;
         private String category;
         private String image;
+        private String discountPrice;
+
+
 
         public Game() {
 
         }
 
     public Game(String title, String price, String PEGI, String category, String image) {
+        this.title = title;
+        this.price = price;
+        this.PEGI = PEGI;
+        this.category = category;
+        this.image = image;
+
+    }
+
+    public Game(String title, String price, String PEGI, String category, String image, String discountPrice) {
             this.title = title;
             this.price = price;
             this.PEGI = PEGI;
             this.category = category;
             this.image = image;
+            this.discountPrice = discountPrice;
 
         }
 
@@ -64,6 +77,13 @@ import java.util.Objects;
         public String getImage() {return image;}
         public void setImage(String image) {this.image = image;}
 
+        public String getDiscountPrice() {
+            return discountPrice;
+        }
+        public void setDiscountPrice(String discountPrice) {
+            this.discountPrice = discountPrice;
+        }
+
         @Override
         public String toString() {
             return "Game{" +
@@ -73,6 +93,7 @@ import java.util.Objects;
                     ", PEGI='" + PEGI + '\'' +
                     ", category='" + category + '\'' +
                     ", image='" + image + '\'' +
+                    ", discountPrice='" + discountPrice + '\'' +
                     '}';
         }
 
@@ -81,12 +102,13 @@ import java.util.Objects;
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Game game = (Game) o;
-            return Objects.equals(id, game.id) && Objects.equals(title, game.title) && Objects.equals(price, game.price) && Objects.equals(PEGI, game.PEGI) && Objects.equals(category, game.category) && Objects.equals(image, game.image);
+            return Objects.equals(id, game.id) && Objects.equals(title, game.title) && Objects.equals(price, game.price) && Objects.equals(PEGI, game.PEGI)
+                    && Objects.equals(category, game.category) && Objects.equals(image, game.image) && Objects.equals(discountPrice, game.discountPrice);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(id, title, price, PEGI, category, image);
+            return Objects.hash(id, title, price, PEGI, category, image, discountPrice);
         }
     }
 
