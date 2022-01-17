@@ -51,9 +51,10 @@
                                 <tr id="tr-price">
                                     <th scope="row">Price:</th>
                                     <td id="price" th:text="${game.price}"></td>
+                                    <td id="discountPrice" th:if="${game.discount != 0}" th:text="(${game.price} - (${game.price} * (${game.discount} / 100)))" ></td>
 
                                 </tr>
-                                <tr th:if="${game.discount != null}" id="discount-row">
+                                <tr th:if="${game.discount != 0}" id="discount-row">
                                     <th scope="row">Discount:</th>
                                     <td id="discount" th:text="${game.discount}"></td>
                                 </tr>
@@ -69,7 +70,7 @@
                             </tbody>
                         </table>
 
-                            <script  type="text/javascript" th:src="@{/js/main.js}"></script>
+
 
                     </div>
                 </div>

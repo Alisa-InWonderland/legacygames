@@ -12,11 +12,12 @@ import java.util.Objects;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String title;
-        private String price;
+        private double price;
         private String PEGI;
         private String category;
         private String image;
-        private String discount;
+        private int discount;
+        private int launchYear;
 
 
 
@@ -24,7 +25,7 @@ import java.util.Objects;
 
         }
 
-    public Game(String title, String price, String PEGI, String category, String image) {
+    public Game(String title, double price, String PEGI, String category, String image) {
         this.title = title;
         this.price = price;
         this.PEGI = PEGI;
@@ -33,13 +34,14 @@ import java.util.Objects;
 
     }
 
-    public Game(String title, String price, String PEGI, String category, String image, String discount) {
+    public Game(String title, double price, String PEGI, String category, String image, int discount, int launchYear) {
             this.title = title;
             this.price = price;
             this.PEGI = PEGI;
             this.category = category;
             this.image = image;
             this.discount = discount;
+            this.launchYear= launchYear;
 
         }
 
@@ -57,10 +59,10 @@ import java.util.Objects;
             this.title = title;
         }
 
-        public String getPrice() {
+        public double getPrice() {
             return price;
         }
-        public void setPrice(String price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 
@@ -77,12 +79,19 @@ import java.util.Objects;
         public String getImage() {return image;}
         public void setImage(String image) {this.image = image;}
 
-        public String getDiscount() {
+        public int getDiscount() {
             return discount;
         }
-        public void setDiscount(String discount) {
+        public void setDiscount(int discount) {
             this.discount = discount;
         }
+
+        public int getLaunchYear() {
+        return launchYear;
+    }
+        public void setLaunchYear(int launchYear) {
+        this.launchYear = launchYear;
+    }
 
         @Override
         public String toString() {
@@ -94,6 +103,7 @@ import java.util.Objects;
                     ", category='" + category + '\'' +
                     ", image='" + image + '\'' +
                     ", discount='" + discount + '\'' +
+                    ", launchYear='" + launchYear + '\'' +
                     '}';
         }
 
@@ -103,12 +113,12 @@ import java.util.Objects;
             if (o == null || getClass() != o.getClass()) return false;
             Game game = (Game) o;
             return Objects.equals(id, game.id) && Objects.equals(title, game.title) && Objects.equals(price, game.price) && Objects.equals(PEGI, game.PEGI)
-                    && Objects.equals(category, game.category) && Objects.equals(image, game.image) && Objects.equals(discount, game.discount);
+                    && Objects.equals(category, game.category) && Objects.equals(image, game.image) && Objects.equals(discount, game.discount)&& Objects.equals(launchYear, game.launchYear);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(id, title, price, PEGI, category, image, discount);
+            return Objects.hash(id, title, price, PEGI, category, image, discount, launchYear);
         }
     }
 
