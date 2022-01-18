@@ -51,7 +51,7 @@
                                 <tr id="tr-price">
                                     <th scope="row">Price:</th>
                                     <td th:if="${game.discount != 0}" class="new-price" id="price" th:text="${game.price}"></td>
-                                    <td id="discountPrice" th:if="${game.discount != 0}" th:text="(${game.price} - (${game.price} * (${game.discount} / 100)))" ></td>
+                                    <td id="discountPrice" th:if="${game.discount != 0}" th:text="${game.priceWithDiscount}"></td>
 
                                 </tr>
                                 <tr th:if="${game.discount != 0}" id="discount-row">
