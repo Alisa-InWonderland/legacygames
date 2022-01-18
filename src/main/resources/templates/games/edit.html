@@ -43,19 +43,19 @@
 
                         <div class="input-container">
                             <label class="col-md2" for="price">Price</label>
-                            <input th:field="*{price}" type="text" class="col-md6 form-control form-control-sm" id="price"
+                            <input th:field="*{price}" value="" onkeyup="printDiscountPrice()" type="text" class="col-md6 form-control form-control-sm" id="price"
                                    placeholder="Enter price">
                         </div>
 
                         <div class="input-container">
                             <label class="col-md2" for="discount">Discount</label>
-                            <input th:field="*{discount}" type="text" class="col-md6 form-control form-control-sm" id="discount"
+                            <input th:field="*{discount}" onkeyup="printDiscountPrice()" type="text" class="col-md6 form-control form-control-sm" id="discount"
                                    placeholder="Enter discount">
                         </div>
 
                         <div class="input-container">
                             <label class="col-md2" for="discountPrice">Price with Discount</label>
-                            <input type="text" class="col-md6 form-control form-control-sm" id="discountPrice">
+                            <input type="text" class="col-md6 form-control form-control-sm" id="discountPrice" readonly >
                         </div>
 
                         <div class="input-container">
