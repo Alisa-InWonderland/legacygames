@@ -22,10 +22,11 @@ import java.util.List;
         this.categoryRepository = categoryRepository;
         this.pegiRepository = pegiRepository;
 
+
     }
 
     @GetMapping("/")
-    String listGames(Model model, @RequestParam(required = false) String category, @RequestParam(required = false) String PEGI)  {
+    String listGames(Model model, @RequestParam(required = false) String category, @RequestParam(required = false) String PEGI) {
         model.addAttribute("title", "Game list");
         model.addAttribute("games", getGames(category, PEGI));
         model.addAttribute("categories", categoryRepository.findAll());
@@ -35,8 +36,8 @@ import java.util.List;
 
 
     @GetMapping("/add")
-    String getForm(Model model){
-        Game game= new Game();
+    String getForm(Model model) {
+        Game game = new Game();
         model.addAttribute("title", "Add game");
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("game", game);
@@ -50,7 +51,7 @@ import java.util.List;
     }
 
     @GetMapping("/edit/{id}")
-    String editGame(Model model, @PathVariable Long id){
+    String editGame(Model model, @PathVariable Long id) {
         Game game = gameRepository.findById(id).get();
         model.addAttribute("game", game);
         model.addAttribute("categories", categoryRepository.findAll());
@@ -73,8 +74,8 @@ import java.util.List;
         if (PEGI != null) {
             return gameRepository.findGamesByPEGIEquals(PEGI);
         }
+
+
         return gameRepository.findAll();
     }
-
 }
-
