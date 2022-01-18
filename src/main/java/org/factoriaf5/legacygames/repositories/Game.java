@@ -140,7 +140,7 @@ public class Game implements Serializable {
     }
 
     public double getPriceWithDiscount() {
-        return price - (price * (1.0*discount / 100));
+        return Math.round((price - (price * (discount * 1.0 / 100))) * 100.0) / 100.0;
 
     }
 }
