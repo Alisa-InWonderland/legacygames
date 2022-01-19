@@ -21,13 +21,13 @@
                         <div class="input-container">
                             <input type="hidden" th:field="*{id}">
                             <label class="col-md2" for="title">Title</label>
-                            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" required  id="title"
                                    placeholder="Enter title">
                         </div>
 
                         <div class="input-container">
                             <label class="col-md2" for="launchyear">Launch Year</label>
-                            <input type="text" class="col-md6 form-control form-control-sm" id="launchyear"
+                            <input th:field="*{launchYear}"type="text" class="col-md6 form-control form-control-sm" pattern="[0-9]{4}" id="launchyear"
                                    placeholder="Enter launch year">
                         </div>
 
@@ -43,7 +43,7 @@
 
                         <div class="input-container">
                             <label class="col-md2" for="price">Price</label>
-                            <input th:field="*{price}" value="" onkeyup="printDiscountPrice()" type="text" class="col-md6 form-control form-control-sm" id="price"
+                            <input th:field="*{price}" value="" onkeyup="printDiscountPrice()" type="text" class="col-md6 form-control form-control-sm" required pattern="^([0-9]+\.?[0-9]{0,2})$" id="price"
                                    placeholder="Enter price">
                         </div>
 
@@ -60,7 +60,7 @@
 
                         <div class="input-container">
                             <label class="col-md2" for="pegi">PEGI</label>
-                            <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" id="pegi"
+                            <input th:field="*{PEGI}" type="text" class="col-md6 form-control form-control-sm" required id="pegi"
                                    placeholder="Enter PEGI">
                         </div>
 
