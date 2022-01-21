@@ -2,8 +2,10 @@ package org.factoriaf5.legacygames.repositories;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "games")
@@ -11,12 +13,21 @@ public class Game implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message = "Title cannot be empty.")
     private String title;
+
+    @DecimalMin(value = "0.0", inclusive = false)
+    @Digits(integer=3, fraction=2)
     private double price;
+
     private String PEGI;
     private String category;
     private String image;
     private int discount;
+
+    @Min(value = 1980, message = "Year bigger than 1900")
+    @Max(value = 2029, message = "Year less than 2029")
     private int launchYear;
 
 

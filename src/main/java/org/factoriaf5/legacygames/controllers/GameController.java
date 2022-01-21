@@ -2,11 +2,17 @@ package org.factoriaf5.legacygames.controllers;
 
 import org.factoriaf5.legacygames.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
     public class GameController {
@@ -26,7 +32,7 @@ import java.util.List;
     }
 
     @GetMapping("/")
-    String listGames(Model model, @RequestParam(required = false) String category, @RequestParam(required = false) String PEGI) {
+    String listGames(@Valid Model model, @RequestParam(required = false) String category, @RequestParam(required = false) String PEGI) {
         model.addAttribute("title", "Game list");
         model.addAttribute("games", getGames(category, PEGI));
         model.addAttribute("categories", categoryRepository.findAll());
@@ -36,7 +42,7 @@ import java.util.List;
 
 
     @GetMapping("/add")
-    String getForm(Model model) {
+    String getForm( @Valid Model model ) {
         Game game = new Game();
         model.addAttribute("title", "Add game");
         model.addAttribute("categories", categoryRepository.findAll());
@@ -45,13 +51,13 @@ import java.util.List;
     }
 
     @PostMapping("/add")
-    String addGame(@ModelAttribute Game game) {
+    String addGame(@Valid @ModelAttribute Game game) {
         gameRepository.save(game);
         return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
-    String editGame(Model model, @PathVariable Long id) {
+    String editGame(@Valid Model model, @PathVariable Long id) {
         Game game = gameRepository.findById(id).get();
         model.addAttribute("game", game);
         model.addAttribute("categories", categoryRepository.findAll());
@@ -78,4 +84,18 @@ import java.util.List;
 
         return gameRepository.findAll();
     }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }
+
 }

@@ -27,7 +27,7 @@
 
                         <div class="input-container">
                             <label class="col-md2" for="launchyear">Launch Year</label>
-                            <input th:field="*{launchYear}"type="text" class="col-md6 form-control form-control-sm" pattern="[0-9]{4}" id="launchyear"
+                            <input th:field="*{launchYear}"type="text" class="col-md6 form-control form-control-sm" pattern="^19[8-9]\d|20[0-2][0-9]$" id="launchyear"
                                    placeholder="Enter launch year">
                         </div>
 

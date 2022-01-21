@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class SampleDataLoader {
-    private GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
     @Autowired
     public SampleDataLoader(GameRepository gameRepository) {
